@@ -31,13 +31,15 @@ def train(model, tokenizer, dataset, output_dir):
         args=TrainingArguments(
             per_device_train_batch_size=1,
             gradient_accumulation_steps=4,
-            warmup_steps=2,
-            max_steps=15,
-            learning_rate=2e-4,
+            warmup_steps=0,
+            weight_decay=0,
+            max_steps=1501,
+            # num_train_epochs=15,
+            learning_rate=0.0001,
             fp16=True,
-            logging_steps=1,
+            logging_steps=100,
             output_dir=output_dir,
-            optim="paged_adamw_8bit",
+            optim= "adamw_torch_fused", # "paged_adamw_8bit",
         ),
         data_collator=DataCollatorForLanguageModeling(tokenizer, mlm=False)
     )
@@ -92,7 +94,7 @@ if __name__ == '__main__':
 
     ### Load dataset from HF
     dataset_name = "leeseeun/KorQuAD_2.0"
-    dataset = load_dataset(dataset_name, split="train")
+    dataset = load_dataset(dataset_name, split="train[:2000]")
     print(dataset)
 
 

@@ -13,7 +13,7 @@ tokenizer = AutoTokenizer.from_pretrained(output_merged_dir)
 ### 추가예정
 
 # Specify input
-eval_data = "이재용이 누구야?"
+eval_data = "인공지능에 대해서 설명해줘."
 text = f"## 질문: {eval_data}\n## 답변: "
 # Specify device
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
