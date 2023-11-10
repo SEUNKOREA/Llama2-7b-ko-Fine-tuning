@@ -2,15 +2,20 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ### Load fine-tuning model from local
-output_merged_dir = "/home/gcp_leeseeun/llama2/results/final_merged_checkpoint"
-model = AutoModelForCausalLM.from_pretrained(
-    output_merged_dir, 
-    device_map="auto", 
-    torch_dtype=torch.bfloat16)
-tokenizer = AutoTokenizer.from_pretrained(output_merged_dir)
+# output_merged_dir = "/home/gcp_leeseeun/llama2/results/final_merged_checkpoint"
+# model = AutoModelForCausalLM.from_pretrained(
+#     output_merged_dir, 
+#     device_map="auto", 
+#     torch_dtype=torch.bfloat16)
+# tokenizer = AutoTokenizer.from_pretrained(output_merged_dir)
 
 ### Load fine-tuning model from huggingface
 ### 추가예정
+model = AutoModelForCausalLM.from_pretrained(
+    "leeseeun/llama2-7b-ko-finetuning", 
+    device_map="auto", 
+    torch_dtype=torch.bfloat16)
+
 
 # Specify input
 eval_data = "인공지능에 대해서 설명해줘."
