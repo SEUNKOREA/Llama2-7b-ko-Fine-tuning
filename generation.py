@@ -15,7 +15,7 @@ model = AutoModelForCausalLM.from_pretrained(
     "leeseeun/llama2-7b-ko-finetuning", 
     device_map="auto", 
     torch_dtype=torch.bfloat16)
-
+tokenizer = AutoTokenizer.from_pretrained("leeseeun/llama2-7b-ko-finetuning")
 
 # Specify input
 eval_data = "인공지능에 대해서 설명해줘."
