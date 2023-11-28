@@ -14,6 +14,7 @@ Fine-tuning 하는 코드입니다. Fine-tuning 결과 체크포인트는 [여�
 - 해당 코드는 이준범님의 [Llama2-7b 한국어 사전학습 ver.](https://huggingface.co/beomi/llama-2-ko-7b)을 [KorQuAD_2.0 데이터셋](https://huggingface.co/datasets/leeseeun/KorQuAD_2.0) 2,000개를 이용해서 fine-tuning 하는 코드입니다.
 - 해당 코드를 실행하기 전 결과가 저장될 로컬경로([`output_dir`](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/3aa6ab0c388c924e975d101c7b368a0b52d815f0/finetuning.py#L109),[`output_merged_dir`](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/3aa6ab0c388c924e975d101c7b368a0b52d815f0/finetuning.py#L117C5-L117C22)), [허깅페이스 리포지토리 주소](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/3aa6ab0c388c924e975d101c7b368a0b52d815f0/finetuning.py#L127)가 올바른지 확인하세요.
 - [사용한 KorQuAD_2.0 데이터셋](https://huggingface.co/datasets/leeseeun/KorQuAD_2.0)은 [해당 링크](https://github.com/korquad/korquad.github.io/tree/master/dataset/KorQuAD_2.1/train)에 있는 zip파일을 모두 합친 후 json 파일로 변환하여 허깅페이스 포맷으로 변환 후 사용하였습니다.
+    - zip파일을 모두 합친 json 파일은 [여기서](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/main/newfile.json) 확인할 수 있습니다.
     - 데이터셋을 만드는 방법은 아래의 ["Create 🤗 datasets from KorQuAD"](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/tree/main#-create--datasets-from-korquad) 가이드를 참고하세요.
 - 모델의 양자화 관련 설정값은 [여기서](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/3aa6ab0c388c924e975d101c7b368a0b52d815f0/model_utils.py#L38) 확인할 수 있습니다.
     - 각 파라미터 설정값에 대한 설명은 [공식문서](https://huggingface.co/docs/transformers/main_classes/quantization#transformers.BitsAndBytesConfig)를 참고하세요.
@@ -46,11 +47,13 @@ Fine-tuning 하는 코드입니다. Fine-tuning 결과 체크포인트는 [여�
 
     python3 create_dataset.py
 
-- 해당 [사용한 KorQuAD_2.0 데이터셋](https://huggingface.co/datasets/leeseeun/KorQuAD_2.0)은 [해당 링크](https://github.com/korquad/korquad.github.io/tree/master/dataset/KorQuAD_2.1/train)에 있는 zip파일을 모두 합친 후 json 파일로 변환하여 허깅페이스 포맷으로 변환 후 허깅페이스 허브에 업로드 하는 코드입니다.
+- 해당 [사용한 KorQuAD_2.0 데이터셋](https://huggingface.co/datasets/leeseeun/KorQuAD_2.0)은 [해당 링크](https://github.com/korquad/korquad.github.io/tree/master/dataset/KorQuAD_2.1/train)에 있는 zip파일을 모두 합친 후 json 파일을 전처리 후 허깅페이스 포맷으로 변환 후 허깅페이스 허브에 업로드 하는 코드입니다.
+- zip파일을 모두 합친 json 파일은 [여기서](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/main/newfile.json) 확인할 수 있습니다.
+- 해당 코드를 실행하기 전, json 원본 데이터 경로([`data_path`](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/abfbb6a9b7b54edc6fa0dc1f3bc467b4adcbc7f1/create_dataset.py#L7C5-L7C14))와 업로드할 [허깅페이스 리포지토리 주소](https://github.com/SEUNKOREA/Llama2-7b-ko-FT/blob/abfbb6a9b7b54edc6fa0dc1f3bc467b4adcbc7f1/create_dataset.py#L34)가 올바른지 확인하세요.
 
 <br>
 
 ## Acknowlegemnets
-해당 코드를 테스트하고 실행함에 있어서 [(주)딥로딩](https://www.deeploading.com/)으로부터 서버 지원을 받았습니다.
+해당 코드를 테스트하고 실행함에 있어서 [(주)딥로딩](https://www.deeploading.com/)으로부터 서버를 지원받았습니다.
 <br>
 유용한 지원을 해주신 [(주)딥로딩](https://www.deeploading.com/)에 감사의 인사를 전합니다.
