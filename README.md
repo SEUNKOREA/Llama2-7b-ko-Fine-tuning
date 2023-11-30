@@ -5,6 +5,24 @@ Fine-tuning 하는 코드입니다. Fine-tuning 결과 체크포인트는 [여�
 
 <br>
 
+## 💊 Requirements
+아래의 패키지를 `pip install`를 이용해서 설치합니다.
+
+    transformers
+    accelerate
+    datasets
+    jsonlines
+    peft
+    bitsandbytes
+    scipy
+
+`mpi4py`가 필요하다면 `sudo apt install` 커맨드를 사용하여 설치를 진행합니다.
+
+    sudo apt install python3-mpi4py
+
+
+<br>
+
 ## 🐚 How to Fine-tuning Llama2-ko-7b
 
     python3 finetuning.py
